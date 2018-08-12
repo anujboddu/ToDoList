@@ -12,28 +12,28 @@ NodeJS
 
 ## Development Environment :
 
-> Plain JavaScript
-> Node.js
-> Express (JS framework)
-> MongoDB (Database)
-> npm (package management)
-> Atom/Sublime as editor
-> Postman (testing APIs)
+* Plain JavaScript
+* Node.js
+* Express (JS framework)
+* MongoDB (Database)
+* npm (package management)
+* Atom/Sublime as editor
+* Postman (testing APIs)
 
 ## Packages Used :
 
-> body-parser (for parsing incoming requests)
-> express (to make the application run)
-> nodemon (restarting server when changes occur)
-> mongoose (object data modeling to simplify interactions with MongoDB)
+* body-parser (for parsing incoming requests)
+* express (to make the application run)
+* nodemon (restarting server when changes occur)
+* mongoose (object data modeling to simplify interactions with MongoDB)
 
 ## STEPS :
 
-1. npm install --save express body-parser mongoose
+**1. npm install --save express body-parser mongoose**
 
-2. npm install --save-dev nodemon
+**2. npm install --save-dev nodemon**
 
-3. touch server.js
+**3. touch server.js**
 
 ```
 const express = require('express');
@@ -50,13 +50,14 @@ app.listen(port, () => {
 });
 ```
 
-4. "start": "node server.js" >> package.json in scripts
-5. npm start and you’d see the log.
-6. **File Structure :**
+**4. "start": "node server.js" >> package.json in scripts**
+**5. npm start and you’d see the log.**
+**6. File Structure :**
 
   We need to structure or directory so we have dedicated files for various actions — routes, models,
   and controllers. Go ahead and create the following directory structure:
 
+```
   --todoApp
       - api
           - models
@@ -66,9 +67,11 @@ app.listen(port, () => {
       - server.js
       - package.json
       ...
+```
 
   We create the dedicated files in their directories- **api/models/todoModel.js api/controllers/todoController.js api/routes/todoRoutes.js** Your directory structure should look like this now:
 
+      ```
       --todoApp
         - api
             - models
@@ -81,8 +84,9 @@ app.listen(port, () => {
         - server.js
         - package.json
         ...
+        ```
 
-7. **Routing : Create your first route (Routes)**
+**7. Routing : Create your first route (Routes)**
 
  ```
  // api/routes/todoRoutes.js
@@ -103,7 +107,7 @@ app.listen(port, () => {
 
 In the code above, the API’s routes are defined under different verbs; when a request is made for the tasks route e.g todoApp.dev/tasks, it calls the getTasks method from the required todoList controller, same for the post, put, and delete routes. The tasks/:taskId route, handles a single task. We can grab a task via its ID - /tasks/3 update or delete it too.
 
-8. **Database Schema : (Models)**
+**8. Database Schema : (Models)**
 
 We’ll be using Mongoose to interact with a MongoDB instance. In the todoModel.js file, we’ll define a schema for our Tasks collection. With Mongoose, we can create Schemas easily by defining the fields and their types. You’ll need to have MongoDB server installed locally, if you want to serve your database. You can also use a remote database, there’s a free tier from MLab(https://mlab.com/)
 
@@ -129,7 +133,7 @@ Here we are going to use MLab(https://mlab.com/)
 
 In the taskModel file, we created a schema for it. As you can see, it the task collection(table) will contain a name: a string, and the date it was created.
 
-9. **Setting up Controllers**
+**9. Setting up Controllers**
 
   ```
   // api/controllers/todoController.js
@@ -183,7 +187,7 @@ In the taskModel file, we created a schema for it. As you can see, it the task c
   };
   ```
 
-10. **Coupling everything :**
+**10. **Coupling everything :**
 
 Back in our server.js file, we’ll connect to our database, by adding a URL to the mongoose connection instance, Load the created Model (task), register our created routes. Update your server.js file to look like this:
 
@@ -220,7 +224,7 @@ Back in our server.js file, we’ll connect to our database, by adding a URL to 
   });
   ```
 
-11. **Testing with Postman**
+**11. Testing with Postman**
 
 To test your API using postman, startup the server nodemon server.js and then open up the postman app and pass in your url
 
